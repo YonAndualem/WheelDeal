@@ -4,6 +4,7 @@ import './index.css'
 import { createBrowserRouter, Route, RouterProvider } from 'react-router-dom'
 import Home from './Home.jsx'
 import Contact from './Contact.jsx'
+import { ClerkProvider } from '@clerk/clerk-react'
 
 //React routing for page pathes by assigning their routes and which elements it should render
 const router = createBrowserRouter([
@@ -16,8 +17,19 @@ const router = createBrowserRouter([
     element:<Contact/>,
   }
 ])
-createRoot(document.getElementById('root')).render(
+
+//Clerk.io API key to be used for authentication
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+
+if (!PUBLISHABLE_KEY) {
+  throw new Error("Missing Publishable Key")
+}
+
+
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}/>
-  </StrictMode>,
-)
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+      <RouterProvider router={router} />
+    </ClerkProvider>
+  </StrictMode>
+);
