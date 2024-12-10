@@ -84,4 +84,52 @@ const Pricing = [
     }
 ]
 
-export default { Manufacturers, Pricing }
+const Categories = [
+    {
+        id: 1,
+        name: 'Sedan',
+        icon: '/Cars/sedan-car.png'
+    },
+    {
+        id: 2,
+        name: 'SUV',
+        icon: '/Cars/suv-car.png'
+    },
+    {
+        id: 3,
+        name: 'Van',
+        icon: '/Cars/van-car.png'
+    },
+    {
+        id: 4,
+        name: 'Electric',
+        icon: '/Cars/electric-car.png'
+    },
+    {
+        id: 5,
+        name: 'Convertible',
+        icon: '/Cars/convertible-car.png'
+    },
+    {
+        id: 6,
+        name: 'Coupe',
+        icon: '/Cars/coupe-car.png'
+    },
+    {
+        id: 7,
+        name: 'Hybrid',
+        icon: '/Cars/hybrid-car.png'
+    },
+    {
+        id: 8,
+        name: 'Truck',
+        icon: '/Cars/truck.png'
+    },
+    {
+        id: 9,
+        name: 'Sports (Exotic)',
+        icon: '/Cars/sports-car.png'
+    }
+];
+
+export default { Manufacturers, Pricing, Categories }

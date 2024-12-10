@@ -8,8 +8,8 @@ function Header() {
     const {user, isSignedIn} = useUser();
     return (
         <div className='flex justify-between items-center shadow-sm'>
-            <div className='justify-normal flex items-center'>
-                <img src="./logo.svg" alt="logo" width={50} height={25} />
+            <div className='justify-between flex items-center px-2'>
+                <img src="./logo.png" alt="logo" width={50} height={25} />
                 <p style={{ fontFamily: 'Montserrat' }}>Wheel Deal</p>
             </div>
             
