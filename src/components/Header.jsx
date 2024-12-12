@@ -2,6 +2,8 @@ import React from 'react'
 import { UserButton, useUser } from '@clerk/clerk-react'
 import { Button } from './ui/button'
 import '@fontsource/montserrat';
+import { Link } from 'react-router-dom';
+import { MdOutlineNoteAdd } from "react-icons/md";
 
 function Header() {
 
@@ -23,7 +25,9 @@ function Header() {
             {isSignedIn ?
             <div className='flex items-center gap-5'>
                 <UserButton/>
-                <Button>Submit Listing</Button>
+                <Link to='/profile'>
+                        <Button className="mr-2">Submit Listing <MdOutlineNoteAdd /></Button>
+                </Link>
             </div>
             :
             <Button>Submit Listing</Button>

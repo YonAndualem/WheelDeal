@@ -5,6 +5,8 @@ import { createBrowserRouter, Route, RouterProvider } from 'react-router-dom'
 import Home from './Home.jsx'
 import Contact from './Contact.jsx'
 import { ClerkProvider } from '@clerk/clerk-react'
+import Profile from './Profile/Profile.jsx'
+import AddListing from './Listing/AddListing.jsx'
 
 //React routing for page pathes by assigning their routes and which elements it should render
 const router = createBrowserRouter([
@@ -15,6 +17,14 @@ const router = createBrowserRouter([
   {
     path: '/contact',
     element:<Contact/>,
+  },
+  {
+    path: '/profile',
+    element: <Profile/>
+  },
+  {
+    path: '/add-listing',
+    element: <AddListing/>
   }
 ])
 
