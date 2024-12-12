@@ -49,9 +49,6 @@
           "label": "Brake Assist",
           "name": "brakeAssist",
           "fieldType": "checkbox"
-        },
-        {
-            
         }
     ]
 }

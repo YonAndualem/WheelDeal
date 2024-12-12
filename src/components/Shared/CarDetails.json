@@ -135,7 +135,7 @@
         {
             "label":"Color",
             "name":"color",
-            "fieldType":"checkbox",
+            "fieldType":"dropdown",
             "required":true,
             "options":["Black", "Blue", "Gold","Pink","Red","Silver"],
             "column":2,
@@ -173,7 +173,7 @@
             "icon":"FaFileAlt"
         },
         {
-            
+
         }
     ]
 }
