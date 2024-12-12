@@ -1,0 +1,57 @@
+{
+    "features": [
+        {
+            "label": "Air Conditioner",
+            "name": "airConditioner",
+            "fieldType": "checkbox"
+        },
+        {
+            "label": "Digital Odometer",
+            "name": "digitalOdometer",
+            "fieldType": "checkbox"
+        },
+        {
+          "label": "Heater",
+          "name": "heater",
+          "fieldType": "checkbox"
+        },
+        {
+          "label": "Leather Seats",
+          "name": "leatherSeats",
+          "fieldType": "checkbox"
+        },
+        {
+          "label": "Panoramic Moonroof",
+          "name": "panoramicMoonroof",
+          "fieldType": "checkbox"
+        },
+        {
+          "label": "Tachometer",
+          "name": "tachometer",
+          "fieldType": "checkbox"
+        },
+        {
+          "label": "Touchscreen Display",
+          "name": "touchscreenDisplay",
+          "fieldType": "checkbox"
+        },
+        {
+          "label": "Anti-lock Breaking",
+          "name": "antilockBreaking",
+          "fieldType": "checkbox"
+        },
+        {
+          "label": "Air Conditioner",
+          "name": "airConditioner",
+          "fieldType": "checkbox"
+        },
+        {
+          "label": "Brake Assist",
+          "name": "brakeAssist",
+          "fieldType": "checkbox"
+        },
+        {
+            
+        }
+    ]
+}
