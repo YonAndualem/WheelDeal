@@ -11,6 +11,7 @@ import { carListing } from '../../Configs/schema'
 import { db } from '../../Configs/neon'
 import TextAreaField from './Components/TextAreaField'
 import IconField from './Components/IconField'
+import UploadImages from './Components/UploadImages'
 
 function AddListing() {
 
@@ -90,7 +91,8 @@ function AddListing() {
                     </div>
 
                     {/*Car Images*/}
-
+                    <Separator className="my-6"/>
+                    <UploadImages />
 
                     {/* */}
 
