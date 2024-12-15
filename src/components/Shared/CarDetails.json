@@ -17,7 +17,7 @@
         },
         {
             "label": "Original Price",
-            "name": "originalprice",
+            "name": "originalPrice",
             "fieldType": "text",
             "required": true,
             "column": 1,
@@ -166,14 +166,11 @@
         },
         {
             "label": "Listing Description",
-            "name": "lsitingDescription",
+            "name": "listingDescription",
             "fieldType":"textarea",
             "required":true,
             "column":2,
             "icon":"FaFileAlt"
-        },
-        {
-
         }
     ]
 }

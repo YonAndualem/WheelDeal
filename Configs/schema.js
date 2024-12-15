@@ -22,5 +22,5 @@ export const carListing = pgTable("carListing", {
     door : varchar('door').notNull(),
     offerType : varchar('offerType'),
     vin : varchar('vin'),
-    listingDescription : varchar('listingDescription').notNull(),
+    listingDescription : varchar('listingDescription').notNull()
 });

@@ -4,10 +4,12 @@ import CarDetails from '../components/Shared/CarDetails.json'
 import Features from '../components/Shared/Features.json'
 import InputField from './Components/InputField'
 import DropDown from './Components/DropDown'
-import TextArea from './Components/TextArea'
 import { Separator } from '@/components/ui/separator'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Button } from '@/components/ui/button'
+import { carListing } from '../../Configs/schema'
+import { db } from '../../Configs/neon'
+import TextAreaField from './Components/TextAreaField'
 
 function AddListing() {
 
@@ -21,9 +23,18 @@ function AddListing() {
         console.log(formData);
     }
 
-    const onSubmit = (e) =>{
+    const onSubmit = async (e) =>{
         e.preventDefault();
         console.log(formData);
+
+        try {
+        const result =await db.insert(carListing).values(formData);
+
+        if(result){
+            console.log('Data Inserted Successfully');
+        }} catch (error) {
+            console.log("Error",error);
+        }
     }
 
     return (
@@ -41,7 +52,7 @@ function AddListing() {
                                     <label className='text-sm'>{item?.label} {item.required&& <span className='text-red-500'>*</span>}</label>
                                     {item.fieldType == 'text' || item.fieldType == 'number' ? <InputField item={item} handleInputChange={handleInputChange} />
                                     : item.fieldType=='dropdown'?<DropDown item={item} handleInputChange={handleInputChange}/>
-                                            : item.fieldType == 'textarea' ? <TextArea item={item} handleInputChange={handleInputChange} />
+                                    : item.fieldType == 'textarea' ? <TextAreaField item={item} handleInputChange={handleInputChange} />
                                     :null}
                                 </div>
                             ))}
