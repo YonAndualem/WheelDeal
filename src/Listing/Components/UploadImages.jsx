@@ -1,13 +1,39 @@
 import React, { useState } from 'react'
 import { IoMdCloseCircle } from "react-icons/io";
+import { v2 as cloudinary } from 'cloudinary';
 function UploadImages() {
 
     const [selectedFileList, setSelectedFileList] = useState([]);
+
+    cloudinary.config({
+        cloud_name: import.meta.env.VITE_CLOUDINARY_NAME,
+        api_key: import.meta.env.VITE_CLOUDINARY_KEY, 
+        api_secret: import.meta.env.VITE_CLOUDINARY_SECRET
+    });
+
+    const uploadToCloudinary = async (file) => {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', 'auto'); // Replace with your upload preset
+
+        try {
+            // * if this doesn't work pass the file's path to the upload method
+            const response = await cloudinary.uploader.upload(file, {
+                upload_preset: 'auto'
+            });
+            return response.secure_url; // Return the URL of the uploaded image
+        } catch (error) {
+            console.error('Error uploading image:', error);
+            return null;
+        }
+    };
+
     const onFileSelected = (event) =>{
         const files = event.target.files;
         
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
+            uploadToCloudinary(file); // Upload the image to Cloudinary one by one
             setSelectedFileList((prev) => [...prev, file]);
         }
     }
