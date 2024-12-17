@@ -17,6 +17,7 @@ function AddListing() {
 
     const [formData, setFormData] = useState ([]);
     const [featuresData, setFeaturesData] = useState ([]);
+    const [triggerUploadImages, setTriggerUploadImages] = useState();
     //Use this function to handle the change in the form fields
     const handleInputChange = (name, value) =>{
         setFormData((prevData) =>({
@@ -43,10 +44,11 @@ function AddListing() {
             //Add the form data and features data here
             ...formData,
             features: featuresData
-        });
+        }).returning({id:carListing.id});
 
         if(result){
             console.log('Data Inserted Successfully');
+            setTriggerUploadImages(result[0]?.id);
         }} catch (error) {
             console.log("Error",error);
         }
@@ -92,7 +94,7 @@ function AddListing() {
 
                     {/*Car Images*/}
                     <Separator className="my-6"/>
-                    <UploadImages />
+                    <UploadImages triggerUploadImages={triggerUploadImages} />
 
                     {/* */}
 

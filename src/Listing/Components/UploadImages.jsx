@@ -1,11 +1,18 @@
 import { Button } from '@/components/ui/button';
 import { storage } from './../../../Configs/FirebaseConfig';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoMdCloseCircle } from "react-icons/io";
-function UploadImages() {
+function UploadImages({ triggerUploadImages }) {
 
     const [selectedFileList, setSelectedFileList] = useState([]);
+
+    useEffect(() => {
+        if (triggerUploadImages) {
+            UploadImagesToServer();
+        }
+    }, [triggerUploadImages])
+
     const onFileSelected = (event) =>{
         const files = event.target.files;
         
@@ -20,14 +27,14 @@ function UploadImages() {
         setSelectedFileList(result);
     }
 
-    const UploadImages=()=>{
-        selectedFileList.forEach((file)=>{
+    const UploadImagesToServer=async()=>{
+        await selectedFileList.forEach(async(file)=>{
             const fileName = Date.now() + '.jpeg';
             const storageRef = ref(storage, 'WheelDeal/' + fileName);
             const metaData = {
                 contentType: 'image/jpeg'
             }
-            uploadBytes(storageRef, file, metaData).then((snapShot)=>{
+           await uploadBytes(storageRef, file, metaData).then((snapShot)=>{
                 console.log('Uploaded File');
             }).then((resp=>{
                 getDownloadURL(storageRef).then(async(downloadURL)=>{
