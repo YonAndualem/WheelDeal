@@ -13,6 +13,8 @@ import TextAreaField from './Components/TextAreaField'
 import IconField from './Components/IconField'
 import UploadImages from './Components/UploadImages'
 import { TbLoader2 } from "react-icons/tb";
+import { toast } from 'sonner'
+import { useNavigate, useNavigation } from 'react-router-dom'
 
 function AddListing() {
 
@@ -20,6 +22,7 @@ function AddListing() {
     const [featuresData, setFeaturesData] = useState ([]);
     const [triggerUploadImages, setTriggerUploadImages] = useState();
     const [loader, setLoader] = useState(false);
+    const navigate = useNavigate();
     //Use this function to handle the change in the form fields
     const handleInputChange = (name, value) =>{
         setFormData((prevData) =>({
@@ -41,7 +44,7 @@ function AddListing() {
         setLoader(true);
         e.preventDefault();
         console.log(formData);
-
+        toast('Please wait while we are adding the listing');
         try {
         const result =await db.insert(carListing).values({
             //Add the form data and features data here
@@ -99,7 +102,7 @@ function AddListing() {
                     {/*Car Images*/}
                     <Separator className="my-6"/>
                     <UploadImages triggerUploadImages={triggerUploadImages} 
-                    setLoader={(v) => setLoader(v)} />
+                    setLoader={(v) => {setLoader(v);navigate('/profile')}} />
 
                     {/* */}
 

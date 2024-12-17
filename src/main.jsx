@@ -7,6 +7,8 @@ import Contact from './Contact.jsx'
 import { ClerkProvider } from '@clerk/clerk-react'
 import Profile from './Profile/Profile.jsx'
 import AddListing from './Listing/AddListing.jsx'
+import { Toaster } from "@/components/ui/sonner"
+
 
 //React routing for page pathes by assigning their routes and which elements it should render
 const router = createBrowserRouter([
@@ -40,6 +42,7 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
       <RouterProvider router={router} />
+      <Toaster />
     </ClerkProvider>
   </StrictMode>
 );
