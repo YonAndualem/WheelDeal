@@ -12,12 +12,14 @@ import { db } from '../../Configs/neon'
 import TextAreaField from './Components/TextAreaField'
 import IconField from './Components/IconField'
 import UploadImages from './Components/UploadImages'
+import { TbLoader2 } from "react-icons/tb";
 
 function AddListing() {
 
     const [formData, setFormData] = useState ([]);
     const [featuresData, setFeaturesData] = useState ([]);
     const [triggerUploadImages, setTriggerUploadImages] = useState();
+    const [loader, setLoader] = useState(false);
     //Use this function to handle the change in the form fields
     const handleInputChange = (name, value) =>{
         setFormData((prevData) =>({
@@ -36,6 +38,7 @@ function AddListing() {
     }
 
     const onSubmit = async (e) =>{
+        setLoader(true);
         e.preventDefault();
         console.log(formData);
 
@@ -49,6 +52,7 @@ function AddListing() {
         if(result){
             console.log('Data Inserted Successfully');
             setTriggerUploadImages(result[0]?.id);
+            setLoader(false);
         }} catch (error) {
             console.log("Error",error);
         }
@@ -94,12 +98,15 @@ function AddListing() {
 
                     {/*Car Images*/}
                     <Separator className="my-6"/>
-                    <UploadImages triggerUploadImages={triggerUploadImages} />
+                    <UploadImages triggerUploadImages={triggerUploadImages} 
+                    setLoader={(v) => setLoader(v)} />
 
                     {/* */}
 
                     <div className='mt-10 flex justify-end'>
-                        <Button onClick={(e)=>onSubmit(e)} >Submit</Button>
+                        <Button type="button" disabled={loader} onClick={(e)=>onSubmit(e)} >
+                            {!loader ? 'Submit' : <TbLoader2 className='animate-spin text-lg' />}
+                            </Button>
                     </div>
                 </form>
             </div>

@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { IoMdCloseCircle } from "react-icons/io";
 import { CarImages } from '../../../Configs/schema';
 import { db } from '../../../Configs/neon';
-function UploadImages({ triggerUploadImages }) {
+function UploadImages({ triggerUploadImages, setLoader }) {
 
     const [selectedFileList, setSelectedFileList] = useState([]);
 
@@ -30,6 +30,7 @@ function UploadImages({ triggerUploadImages }) {
     }
 
     const UploadImagesToServer=async()=>{
+        setLoader(true); 
         await selectedFileList.forEach(async(file)=>{
             const fileName = Date.now() + '.jpeg';
             const storageRef = ref(storage, 'WheelDeal/' + fileName);
@@ -47,6 +48,8 @@ function UploadImages({ triggerUploadImages }) {
                          })
                 })
             }))
+
+            setLoader(false);
         })
     }
 
