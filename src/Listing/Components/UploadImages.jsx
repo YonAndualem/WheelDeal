@@ -1,3 +1,6 @@
+import { Button } from '@/components/ui/button';
+import { storage } from './../../../Configs/FirebaseConfig';
+import { ref, uploadBytes } from 'firebase/storage';
 import React, { useState } from 'react'
 import { IoMdCloseCircle } from "react-icons/io";
 function UploadImages() {
@@ -16,6 +19,20 @@ function UploadImages() {
         const result = selectedFileList.filter((item)=> item != image);
         setSelectedFileList(result);
     }
+
+    const UploadImages=()=>{
+        selectedFileList.forEach((file)=>{
+            const fileName = Date.now() + '.jpeg';
+            const storageRef = ref(storage, 'WheelDeal/' + fileName);
+            const metaData = {
+                contentType: 'image/jpeg'
+            }
+            uploadBytes(storageRef, file, metaData).then((snapShot)=>{
+                console.log('Uploaded File');
+            })
+        })
+    }
+
   return (
     <div>
         <h2 className='font-medium text-xl my-3'>Upload Images</h2>
@@ -38,6 +55,7 @@ function UploadImages() {
             <input type="file" multiple={true} id="upload-images" onChange={onFileSelected} className='opacity-0
             '/>
         </div>
+        <Button onClick = { UploadImages} >Upload Images</Button>
     </div>
   )
 }
