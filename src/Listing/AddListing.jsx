@@ -92,7 +92,7 @@ function AddListing() {
 
                     {/*Car Images*/}
                     <Separator className="my-6"/>
-                   
+                    <UploadImages />
 
                     {/* */}
 
@@ -100,7 +100,6 @@ function AddListing() {
                         <Button onClick={(e)=>onSubmit(e)} >Submit</Button>
                     </div>
                 </form>
-                <UploadImages />
             </div>
         </div>
     )

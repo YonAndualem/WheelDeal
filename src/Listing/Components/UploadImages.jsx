@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { storage } from './../../../Configs/FirebaseConfig';
-import { ref, uploadBytes } from 'firebase/storage';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import React, { useState } from 'react'
 import { IoMdCloseCircle } from "react-icons/io";
 function UploadImages() {
@@ -29,7 +29,11 @@ function UploadImages() {
             }
             uploadBytes(storageRef, file, metaData).then((snapShot)=>{
                 console.log('Uploaded File');
-            })
+            }).then((resp=>{
+                getDownloadURL(storageRef).then(async(downloadURL)=>{
+                    console.log(downloadURL);
+                })
+            }))
         })
     }
 
@@ -55,7 +59,6 @@ function UploadImages() {
             <input type="file" multiple={true} id="upload-images" onChange={onFileSelected} className='opacity-0
             '/>
         </div>
-        <Button onClick = { UploadImages} >Upload Images</Button>
     </div>
   )
 }
