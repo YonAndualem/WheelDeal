@@ -146,6 +146,8 @@ function AddListing() {
                     {/*Car Images*/}
                     <Separator className="my-6"/>
                     <UploadImages triggerUploadImages={triggerUploadImages} 
+                    carInfo={carInfo}
+                    mode={mode}
                     setLoader={(v) => {setLoader(v);navigate('/profile')}} />
 
                     {/* */}

@@ -9,6 +9,17 @@ import { db } from '../../../Configs/neon';
 import Service from '../../components/Shared/Service';
 import CarItem from '@/components/CarItem';
 import { FaRegTrashAlt } from "react-icons/fa";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 
 function MyListing() {
 
@@ -48,7 +59,26 @@ function MyListing() {
                             <Link to={'/add-listing?mode=edit&id=' + item.id} className='w-full'>
                                 <Button variant="outline" className='w-full'>Edit</Button>
                             </Link>
-                            <Button  variant="destructive"><FaRegTrashAlt/></Button>
+
+                            <AlertDialog>
+                                <AlertDialogTrigger>
+                                    <Button variant="destructive"><FaRegTrashAlt /></Button>
+                                </AlertDialogTrigger>
+                                <AlertDialogContent>
+                                    <AlertDialogHeader>
+                                        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                                        <AlertDialogDescription>
+                                            This action cannot be undone. This will permanently delete your listing
+                                            and remove your car data from our servers.
+                                        </AlertDialogDescription>
+                                    </AlertDialogHeader>
+                                    <AlertDialogFooter>
+                                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                        <AlertDialogAction className="bg-red-600">Delete</AlertDialogAction>
+                                    </AlertDialogFooter>
+                                </AlertDialogContent>
+                            </AlertDialog>
+
                         </div>
                     </div>
                 ))}
