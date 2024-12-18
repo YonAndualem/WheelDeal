@@ -7,14 +7,16 @@ import { MdOutlineNoteAdd } from "react-icons/md";
 
 function Header() {
 
-    const {user, isSignedIn} = useUser();
+    const { user, isSignedIn } = useUser();
     return (
         <div className='flex justify-between items-center shadow-sm'>
-            <div className='justify-between flex items-center px-2'>
-                <img src="./logo.png" alt="logo" width={50} height={25} />
-                <p style={{ fontFamily: 'Montserrat' }}>Wheel Deal</p>
-            </div>
-            
+            <Link to="/">
+                <div className='justify-between flex items-center px-2'>
+                    <img src="./logo.png" alt="logo" width={50} height={25} />
+                    <p style={{ fontFamily: 'Montserrat' }}>Wheel Deal</p>
+                </div>
+            </Link>
+
             <ul className='hidden md:flex gap-16' style={{ fontFamily: 'Montserrat' }}>
                 <li className='font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary'>Home</li>
                 <li className='font-medium hover:scale-105 transition-all cursor-pointer hover:text-primary'>Search</li>
@@ -23,14 +25,14 @@ function Header() {
             </ul>
 
             {isSignedIn ?
-            <div className='flex items-center gap-5'>
-                <UserButton/>
-                <Link to='/profile'>
+                <div className='flex items-center gap-5'>
+                    <UserButton />
+                    <Link to='/profile'>
                         <Button className="mr-2">Submit Listing <MdOutlineNoteAdd /></Button>
-                </Link>
-            </div>
-            :
-            <Button>Submit Listing</Button>
+                    </Link>
+                </div>
+                :
+                <Button>Submit Listing</Button>
             }
 
         </div>
