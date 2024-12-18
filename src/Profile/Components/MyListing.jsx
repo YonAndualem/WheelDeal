@@ -62,7 +62,9 @@ function MyListing() {
 
                             <AlertDialog>
                                 <AlertDialogTrigger>
-                                    <Button variant="destructive"><FaRegTrashAlt /></Button>
+                                    
+                                        <Button variant="destructive"><FaRegTrashAlt /></Button>
+                                    
                                 </AlertDialogTrigger>
                                 <AlertDialogContent>
                                     <AlertDialogHeader>
@@ -74,7 +76,25 @@ function MyListing() {
                                     </AlertDialogHeader>
                                     <AlertDialogFooter>
                                         <AlertDialogCancel>Cancel</AlertDialogCancel>
-                                        <AlertDialogAction className="bg-red-600">Delete</AlertDialogAction>
+                                        <AlertDialogAction className="bg-red-600"
+                                            onClick={async () => {
+                                                try {
+                                                    // First, delete associated car images
+                                                    await db.delete(CarImages).where(eq(CarImages.carListingId, item.id));
+
+                                                    // Then delete the car listing
+                                                    await db.delete(carListing).where(eq(carListing.id, item.id));
+
+                                                    console.log('Deleted car listing and associated images manually');
+
+                                                    // Refresh the car listing after deletion
+                                                    getUserCarListing();
+                                                } catch (error) {
+                                                    console.error('Error deleting car listing:', error);
+                                                }
+                                            }}
+
+                                        >Delete</AlertDialogAction>
                                     </AlertDialogFooter>
                                 </AlertDialogContent>
                             </AlertDialog>
