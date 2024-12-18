@@ -14,7 +14,9 @@ import IconField from './Components/IconField'
 import UploadImages from './Components/UploadImages'
 import { TbLoader2 } from "react-icons/tb";
 import { toast } from 'sonner'
-import { useNavigate, useNavigation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useUser } from '@clerk/clerk-react'
+import moment from 'moment'
 
 function AddListing() {
 
@@ -23,6 +25,7 @@ function AddListing() {
     const [triggerUploadImages, setTriggerUploadImages] = useState();
     const [loader, setLoader] = useState(false);
     const navigate = useNavigate();
+    const { user } = useUser();
     //Use this function to handle the change in the form fields
     const handleInputChange = (name, value) =>{
         setFormData((prevData) =>({
@@ -49,7 +52,9 @@ function AddListing() {
         const result =await db.insert(carListing).values({
             //Add the form data and features data here
             ...formData,
-            features: featuresData
+            features: featuresData,
+            createdBy: user?.primaryEmailAddress?.emailAddress,
+            postedOn: moment().format('DD/MM/YYYY')
         }).returning({id:carListing.id});
 
         if(result){
