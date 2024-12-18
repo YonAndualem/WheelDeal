@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { MdOutlineNoteAdd } from "react-icons/md";
 import { Button } from '@/components/ui/button'
@@ -7,11 +7,12 @@ import { eq, desc } from 'drizzle-orm';
 import { useUser } from '@clerk/clerk-react';
 import { db } from '../../../Configs/neon';
 import Service from '../../components/Shared/Service';
+import CarItem from '@/components/CarItem';
 
 function MyListing() {
 
     const { user } = useUser();
-    
+    const [carList, setCarList] = useState([])
     useEffect(() => {
         user && getUserCarListing()
     }, [user])
@@ -24,6 +25,7 @@ function MyListing() {
 
         const resp = Service.FormatResult(result);
         console.log(resp);
+        setCarList(resp);
     }
 
     return (
@@ -35,6 +37,14 @@ function MyListing() {
                         <MdOutlineNoteAdd /> Post a new Listing
                     </Button>
                 </Link>
+            </div>
+
+            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-7'>
+                {carList.map((item, index) => (
+                    <div key={index} className='flex gap-4 mt-4'>
+                        <CarItem car={item} />
+                    </div>
+                ))}
             </div>
         </div>
     )
