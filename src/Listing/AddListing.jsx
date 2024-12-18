@@ -47,6 +47,7 @@ function AddListing() {
         .where(eq(carListing.id, recordId));
         const resp = Service.FormatResult(result);
         setCarInfo(resp[0]);
+        setFormData(resp[0]);
         setFeaturesData(resp[0].features);
     }
     //Use this function to handle the change in the form fields
@@ -71,21 +72,34 @@ function AddListing() {
         e.preventDefault();
         console.log(formData);
         toast('Please wait while we are adding the listing');
-        try {
-        const result =await db.insert(carListing).values({
-            //Add the form data and features data here
-            ...formData,
-            features: featuresData,
-            createdBy: user?.primaryEmailAddress?.emailAddress,
-            postedOn: moment().format('DD/MM/YYYY')
-        }).returning({id:carListing.id});
 
-        if(result){
-            console.log('Data Inserted Successfully');
-            setTriggerUploadImages(result[0]?.id);
+        if (mode == 'edit') {
+            const result = await db.update(carListing).set({
+                ...formData,
+                features: featuresData,
+                createdBy: user?.primaryEmailAddress?.emailAddress,
+                postedOn: moment().format('DD/MM/YYYY')
+            }).where(eq(carListing.id, recordId));
+            navigate('/profile');
             setLoader(false);
-        }} catch (error) {
-            console.log("Error",error);
+        } 
+        else {
+            try {
+            const result =await db.insert(carListing).values({
+                //Add the form data and features data here
+                ...formData,
+                features: featuresData,
+                createdBy: user?.primaryEmailAddress?.emailAddress,
+                postedOn: moment().format('DD/MM/YYYY')
+            }).returning({id:carListing.id});
+
+            if(result){
+                console.log('Data Inserted Successfully');
+                setTriggerUploadImages(result[0]?.id);
+                setLoader(false);
+            }} catch (error) {
+                console.log("Error",error);
+            }
         }
     }
 
