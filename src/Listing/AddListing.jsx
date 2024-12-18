@@ -1,5 +1,5 @@
 import Header from '@/components/Header'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CarDetails from '../components/Shared/CarDetails.json'
 import Features from '../components/Shared/Features.json'
 import InputField from './Components/InputField'
@@ -8,24 +8,47 @@ import { Separator } from '@/components/ui/separator'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Button } from '@/components/ui/button'
 import { carListing } from '../../Configs/schema'
+import { CarImages } from '../../Configs/schema'
 import { db } from '../../Configs/neon'
 import TextAreaField from './Components/TextAreaField'
 import IconField from './Components/IconField'
 import UploadImages from './Components/UploadImages'
 import { TbLoader2 } from "react-icons/tb";
 import { toast } from 'sonner'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useUser } from '@clerk/clerk-react'
 import moment from 'moment'
-
+import { eq } from 'drizzle-orm'
+import Service from '../components/Shared/Service'
 function AddListing() {
 
     const [formData, setFormData] = useState ([]);
     const [featuresData, setFeaturesData] = useState ([]);
     const [triggerUploadImages, setTriggerUploadImages] = useState();
     const [loader, setLoader] = useState(false);
+    const [searchParams] = useSearchParams();
+    const [carInfo, setCarInfo] = useState();
     const navigate = useNavigate();
     const { user } = useUser();
+
+    const mode = searchParams.get('mode');
+    const recordId = searchParams.get('id');
+
+    useEffect(() => {
+        if(mode == 'edit')
+            {
+            getListingDetails();
+            }
+    }, []);
+    
+    const getListingDetails = async () =>{
+        const result = await db.select().from(carListing)
+        .innerJoin(CarImages, eq(carListing.id, CarImages.carListingId))
+        .where(eq(carListing.id, recordId));
+        const resp = Service.FormatResult(result);
+        setCarInfo(resp[0]);
+        setFeaturesData(resp[0].features);
+    }
     //Use this function to handle the change in the form fields
     const handleInputChange = (name, value) =>{
         setFormData((prevData) =>({
@@ -81,9 +104,9 @@ function AddListing() {
                                     <label className='text-sm flex gap-2 items-center mb-1'>
                                         <IconField icon={item.icon} />
                                         {item?.label} {item.required&& <span className='text-red-500'>*</span>}</label>
-                                    {item.fieldType == 'text' || item.fieldType == 'number' ? <InputField item={item} handleInputChange={handleInputChange} />
-                                    : item.fieldType=='dropdown'?<DropDown item={item} handleInputChange={handleInputChange}/>
-                                    : item.fieldType == 'textarea' ? <TextAreaField item={item} handleInputChange={handleInputChange} />
+                                    {item.fieldType == 'text' || item.fieldType == 'number' ? <InputField item={item} handleInputChange={handleInputChange} carInfo={carInfo} />
+                                        : item.fieldType == 'dropdown' ? <DropDown item={item} handleInputChange={handleInputChange} carInfo={carInfo} />
+                                            : item.fieldType == 'textarea' ? <TextAreaField item={item} handleInputChange={handleInputChange} carInfo={carInfo} />
                                     :null}
                                 </div>
                             ))}
@@ -98,7 +121,9 @@ function AddListing() {
                         <div className='grid grid-cols-2 md:grid-cols-3 gap-2'>
                             {Features.features.map((item, index)=>(
                                 <div key={index} className='flex gap-2 items-center'>
-                                    <Checkbox onCheckedChange={(value)=>handleFeaturesChange(item.name, value)} /> <h2>{item.label}</h2>
+                                    <Checkbox onCheckedChange={(value)=>handleFeaturesChange(item.name, value)}
+                                    checked={featuresData?.[item.name] }
+                                    /> <h2>{item.label}</h2>
                                 </div>
                             ))}
                         </div>
