@@ -37,7 +37,7 @@ function CategoryFilter() {
                             <CarItem car={item} />
                         </div>
                     )) : [1, 2, 3, 4, 5, 6].map((item, index) => (
-                        <div className='animate-pulse h-[330px] rounded-xl bg-slate-200'>
+                        <div className='animate-pulse h-[250px] rounded-xl bg-slate-200'>
                         </div>
                     ))}
                 </div>
