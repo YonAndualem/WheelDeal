@@ -8,6 +8,7 @@ import { ClerkProvider } from '@clerk/clerk-react'
 import Profile from './Profile/Profile.jsx'
 import AddListing from './Listing/AddListing.jsx'
 import { Toaster } from "@/components/ui/sonner"
+import CategoryFilter from './Search/[category]/CategoryFilter'
 
 
 //React routing for page pathes by assigning their routes and which elements it should render
@@ -27,7 +28,12 @@ const router = createBrowserRouter([
   {
     path: '/add-listing',
     element: <AddListing/>
+  },
+  {
+    path: '/search/:category',
+    element: <CategoryFilter/>
   }
+
 ])
 
 //Clerk.io API key to be used for authentication
