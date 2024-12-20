@@ -10,6 +10,7 @@ import AddListing from './Listing/AddListing.jsx'
 import { Toaster } from "@/components/ui/sonner"
 import CategoryFilter from './Search/[category]/CategoryFilter'
 import SearchOptions from './Search/SearchOptions'
+import ListingDetail from './Listing/ListingDetails/[id]/ListingDetail'
 
 
 //React routing for page pathes by assigning their routes and which elements it should render
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: '/search',
     element: <SearchOptions/>
+  },
+  {
+    path: '/listing-details/:id',
+    element: <ListingDetail/>
   }
 
 ])
