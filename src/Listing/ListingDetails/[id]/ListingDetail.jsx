@@ -10,6 +10,7 @@ import ImageGallery from '../Components/ImageGallery';
 import Description from '../Components/Description';
 import Features from '../Components/Features';
 import Pricing from '../Components/Pricing';
+import Specification from '../Components/Specification';
 
 function ListingDetail() {
 
@@ -50,6 +51,7 @@ function ListingDetail() {
                     {/*Price */}
                     <Pricing carDetail={carDetail}/>
                     {/*Car Details */}
+                    <Specification carDetail={carDetail}/>
                     {/*owner Details */}
 
                 </div>
