@@ -90,6 +90,8 @@ function AddListing() {
                 ...formData,
                 features: featuresData,
                 createdBy: user?.primaryEmailAddress?.emailAddress,
+                userName: user?.fullName,
+                userImageUrl: user?.imageUrl,
                 postedOn: moment().format('DD/MM/YYYY')
             }).returning({id:carListing.id});
 
@@ -98,6 +100,8 @@ function AddListing() {
                 setTriggerUploadImages(result[0]?.id);
                 setLoader(false);
             }} catch (error) {
+                setLoader(false);
+                toast('Error while adding the listing');
                 console.log("Error",error);
             }
         }
