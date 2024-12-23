@@ -6,6 +6,8 @@ import { db } from '../../../../Configs/neon';
 import { CarImages, carListing } from '../../../../Configs/schema';
 import { eq } from 'drizzle-orm';
 import Service from '@/components/Shared/Service';
+import ImageGallery from '../Components/ImageGallery';
+import Description from '../Components/Description';
 
 function ListingDetail() {
 
@@ -30,11 +32,13 @@ function ListingDetail() {
         <div className='p-10 md:px-20'>
             <DetailHeader carDetail={carDetail}/>
 
-            <div className='grid grid-cols-1 md:grid-cols-3 w-full'>
+            <div className='grid grid-cols-1 md:grid-cols-3 w-full mt-10 gap-5'>
                 {/*Left */}
                 <div className='md:col-span-2'>
                     {/*Image */}
+                    <ImageGallery carDetail={carDetail}/>
                     {/*Description */}
+                    <Description carDetail={carDetail}/>
                     {/*Features */}
                     
                 </div>
@@ -43,7 +47,7 @@ function ListingDetail() {
                     {/*Price */}
                     {/*Car Details */}
                     {/*owner Details */}
-                    
+
                 </div>
             </div>
         </div>
