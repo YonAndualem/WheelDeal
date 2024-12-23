@@ -12,6 +12,8 @@ import Features from '../Components/Features';
 import Pricing from '../Components/Pricing';
 import Specification from '../Components/Specification';
 import OwnersDetail from '../Components/OwnersDetail';
+import MostSearched from '@/components/MostSearched';
+import Footer from '@/components/Footer';
 
 function ListingDetail() {
 
@@ -58,6 +60,8 @@ function ListingDetail() {
                     </div>
                 </div>
             </div>
+            <MostSearched />
+            <Footer />
         </div>
     )
 }
