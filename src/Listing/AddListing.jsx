@@ -74,14 +74,28 @@ function AddListing() {
         toast('Please wait while we are adding the listing');
 
         if (mode == 'edit') {
-            const result = await db.update(carListing).set({
-                ...formData,
-                features: featuresData,
-                createdBy: user?.primaryEmailAddress?.emailAddress,
-                postedOn: moment().format('DD/MM/YYYY')
-            }).where(eq(carListing.id, recordId));
-            navigate('/profile');
-            setLoader(false);
+            try{
+                const result = await db.update(carListing).set({
+                    ...formData,
+                    features: featuresData,
+                    createdBy: user?.primaryEmailAddress?.emailAddress,
+                    postedOn: moment().format('DD/MM/YYYY')
+                }).where(eq(carListing.id, recordId));
+                navigate('/profile');
+                setLoader(false);
+                if (result) {
+                    console.log('Data Updated Successfully');
+                    toast('Listing Updated Successfully');
+                    setTriggerUploadImages(recordId);
+                }
+            }
+            
+            catch(error){
+                setLoader(false);
+                toast('Error while updating the listing');
+                console.log("Error",error);
+            }
+            
         } 
         else {
             try {
