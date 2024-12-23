@@ -27,4 +27,9 @@ const FormatResult = (resp) => {
     return finalResult;
 }
 
+const CreateSendBirdUser = (user) => {
+    const id = (user.primaryEmailAddress?.emailAddress).split('@')[0];
+    return id;
+}
+
 export default { FormatResult };
