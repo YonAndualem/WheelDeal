@@ -9,6 +9,7 @@ import Service from '@/components/Shared/Service';
 import ImageGallery from '../Components/ImageGallery';
 import Description from '../Components/Description';
 import Features from '../Components/Features';
+import Pricing from '../Components/Pricing';
 
 function ListingDetail() {
 
@@ -47,6 +48,7 @@ function ListingDetail() {
                 {/*Right */}
                 <div>
                     {/*Price */}
+                    <Pricing carDetail={carDetail}/>
                     {/*Car Details */}
                     {/*owner Details */}
 
