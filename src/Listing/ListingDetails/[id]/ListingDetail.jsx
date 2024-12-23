@@ -8,6 +8,7 @@ import { eq } from 'drizzle-orm';
 import Service from '@/components/Shared/Service';
 import ImageGallery from '../Components/ImageGallery';
 import Description from '../Components/Description';
+import Features from '../Components/Features';
 
 function ListingDetail() {
 
@@ -40,6 +41,7 @@ function ListingDetail() {
                     {/*Description */}
                     <Description carDetail={carDetail}/>
                     {/*Features */}
+                    <Features features={carDetail?.features}/>
                     
                 </div>
                 {/*Right */}
