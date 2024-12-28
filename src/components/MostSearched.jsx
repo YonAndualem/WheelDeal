@@ -30,6 +30,31 @@ function MostSearched() {
         console.log(resp);
         setCarList(resp);
     }
+    useEffect(() => {
+        const interval = setInterval(() => {
+            document.querySelector('.carousel-next').click();
+        }, 3000); // Change slide every 3 seconds
+
+        return () => clearInterval(interval);
+    }, []);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const nextButton = document.querySelector('.carousel-next');
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            const activeItem = document.querySelector('.carousel-item.active');
+            const isLastItem = activeItem === carouselItems[carouselItems.length - 1];
+
+            if (isLastItem) {
+                carouselItems[0].scrollIntoView({ behavior: 'smooth' });
+            } else {
+                nextButton.click();
+            }
+        }, 5000); // Change slide every 5 seconds
+
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <div className='mx-24 '>
             <h2 className='font-bold text-3xl text-center mt-10 mb-10'>Available Listings</h2>
@@ -37,13 +62,13 @@ function MostSearched() {
             <Carousel className="mb-10">
                 <CarouselContent>
                     {carList.map((car, index) => (
-                        <CarouselItem key={index} className="basis-1/2 md:basis-1/3 lg:basis-1/4">
+                        <CarouselItem key={index} className="basis-1/2 md:basis-1/3 lg:basis-1/4 carousel-item">
                             <CarItem car={car} />
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious className="text-white bg-slate-900"/>
-                <CarouselNext className="text-white bg-slate-900"/>
+                <CarouselPrevious className="carousel-previous text-white bg-slate-900"/>
+                <CarouselNext className="carousel-next text-white bg-slate-900"/>
             </Carousel>
         </div>
     )
