@@ -19,7 +19,7 @@ function Header() {
                 </div>
             </Link>
 
-
+            
 
             {isSignedIn ?
                 <div className='flex items-center '>
@@ -32,12 +32,12 @@ function Header() {
                             <Button className="mr-2 bg-slate-800" style={{ fontFamily: 'Montserrat' }}>Submit Listing <MdOutlineNoteAdd /></Button>
                         </Link>
                     </div>
-
+                    
                 </div>
                 :
                 <SignInButton mode='modal'>
                     <Button className="mr-3 bg-slate-800">Sign In <FaSignInAlt /></Button>
-
+                
                 </SignInButton>
             }
 
