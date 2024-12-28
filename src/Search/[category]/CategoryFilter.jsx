@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom'
 import { db } from '../../../Configs/neon';
 import Service from '@/components/Shared/Service';
 import CarItem from '@/components/CarItem';
+import Footer from '@/components/Footer';
 
 function CategoryFilter() {
 
@@ -26,10 +27,10 @@ function CategoryFilter() {
     return (
         <div>
             <Header />
-            <div className='p-16 bg-blue-700 flex justify-center'>
+            <div className='p-16 bg-slate-800 flex justify-center'>
                 <Search />
             </div>
-            <div className='p-10 md:px-20'>
+            <div className='p-10 md:px-20 bg-slate-800 text-white'>
                 <h2 className='font-bold text-4xl'>{category}</h2>
                 <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-7'>
                     {carList?.length>0? carList.map((item, index) => (
@@ -37,12 +38,13 @@ function CategoryFilter() {
                             <CarItem car={item} />
                         </div>
                     )) : [1, 2, 3, 4, 5, 6].map((item, index) => (
-                        <div className='animate-pulse h-[250px] rounded-xl bg-slate-200'>
+                        <div className='animate-pulse h-[250px] rounded-xl bg-slate-700'>
                         </div>
                     ))}
                 </div>
 
             </div>
+            <Footer/>
         </div>
     )
 }

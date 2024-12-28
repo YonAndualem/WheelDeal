@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 
 function Home() {
     return (
-        <div>
+        <div className="bg-slate-800 text-white">
             {/* Header */}
             <Header/>
             {/* Hero */}

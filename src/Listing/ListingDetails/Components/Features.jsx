@@ -15,7 +15,7 @@ return (
             <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-5 gap-8'>
                     {Object.entries(features).map(([feature, value]) => (
                             <div key={feature} className='flex items-center gap-2'>
-                                    <MdCheck className='text-primary text-lg p-1 rounded-full bg-blue-100' />
+                                    <MdCheck className='text-white text-lg p-1 rounded-full bg-slate-700' />
                                     <h2>{formatFeatureName(feature)}</h2>
                             </div>
                     ))}
