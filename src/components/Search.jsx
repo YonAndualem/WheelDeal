@@ -18,15 +18,15 @@ function Search() {
     const [price, setPrice] = useState();
 
     return (
-        <div className='p-2 md:p-5 bg-white rounded-md md:rounded-full flex-col md:flex md:flex-row gap-10 px-5 items-center w-[60%]'>
+        <div className='p-2 md:p-5 bg-slate-900 rounded-md md:rounded-full flex-col md:flex md:flex-row gap-10 px-5 items-center w-[60%]'>
             <Select onValueChange={(value) => setCars(value)}>
                 <SelectTrigger className="outline-none md:border-none w-full shadow-none text-lg">
                     <SelectValue placeholder="Condition" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className='bg-slate-800 text-white'>
                     <SelectItem value="New">New</SelectItem>
                     <SelectItem value="Old">Old</SelectItem>
-                    <SelectItem value="Certified Pre-Owned">Certified Pre-Owned</SelectItem>
+                    <SelectItem value="Certified Pre-Owned">Preowned Abroad</SelectItem>
                 </SelectContent>
             </Select >
             <Separator orientation="vertical" className='hidden md:block' />
@@ -34,7 +34,7 @@ function Search() {
                 <SelectTrigger className="outline-none md:border-none w-full shadow-none text-lg">
                     <SelectValue placeholder="Manufacturers" />
                 </SelectTrigger>
-                <SelectContent style={{ maxHeight: '200px', overflowY: 'auto' }}>
+                <SelectContent style={{ maxHeight: '200px', overflowY: 'auto' }} className='bg-slate-800 text-white'>
                     {Data.Manufacturers.map((manufacturer, index) => (
                         <SelectItem key={index} value={manufacturer.name}>{manufacturer.name}</SelectItem>
                     ))}
@@ -45,14 +45,14 @@ function Search() {
                 <SelectTrigger className="outline-none md:border-none w-full shadow-none text-lg">
                     <SelectValue placeholder="Pricing" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className='bg-slate-800 text-white'>
                     {Data.Pricing.map((price, index) => (
                         <SelectItem key={index} value={price.amount}>{price.amount}</SelectItem>
                     ))}
                 </SelectContent>
             </Select>
             <Link to={"/search?cars=" + cars + "&make=" + make + "&price=" + price} >
-                <CiSearch className='text-[50px] bg-primary rounded-full p-3 text-white hover:scale-105 transition-all cursor-pointer ' />
+                <CiSearch className='text-[50px] bg-slate-950 rounded-full p-3 text-white hover:scale-105 transition-all cursor-pointer ' />
             </Link>
         </div>
     )

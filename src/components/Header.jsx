@@ -25,10 +25,10 @@ function Header() {
                     <div className='flex items-center gap-5'>
                         <UserButton />
                         <Link to='/listings'>
-                            <Button className="bg-slate-800">Your Listings <FaListCheck /></Button>
+                            <Button className="bg-slate-800" style={{ fontFamily: 'Montserrat' }}>Your Listings <FaListCheck /></Button>
                         </Link>
                         <Link to='/profile'>
-                            <Button className="mr-2 bg-slate-800">Submit Listing <MdOutlineNoteAdd /></Button>
+                            <Button className="mr-2 bg-slate-800" style={{ fontFamily: 'Montserrat' }}>Submit Listing <MdOutlineNoteAdd /></Button>
                         </Link>
                     </div>
                     
