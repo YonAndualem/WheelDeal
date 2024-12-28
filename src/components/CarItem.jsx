@@ -12,12 +12,14 @@ function CarItem({ car }) {
 
     return (
         <Link to={'/listing-details/' + car?.id} >
-            <div className='rounded-xl bg-white border hover:shadow-md cursor-pointer'>
-                <h2 className='absolute m-2 bg-green-600 px-2 rounded-full text-sm text-white'>NEW</h2>
+            <div className='rounded-xl bg-slate-900 border hover:shadow-md cursor-pointer'>
+                {new Date() - new Date(car?.timestamp) < 30 * 24 * 60 * 60 * 1000 && (
+                    <h2 className='absolute m-2 bg-green-600 px-2 rounded-full text-sm text-white'>NEW</h2>
+                )}
                 <img src={car?.images[0]?.imageUrl} width={'100%'} height={200} alt={car.name} className='rounded-t-xl h-[180px] object-cover ' />
 
                 <div className='p-4'>
-                    <h2 className='font-bold text-black text-lg mb-2'>{car?.listingTitle}</h2>
+                    <h2 className='font-bold text-white text-lg mb-2'>{car?.listingTitle}</h2>
                     <Separator />
                     <div className='grid grid-cols-3 mt-5'>
                         <div className='flex flex-col items-center'>
