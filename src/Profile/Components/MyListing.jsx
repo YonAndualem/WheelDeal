@@ -44,7 +44,7 @@ function MyListing() {
             <div className='flex justify-between items-center'>
                 <h2 className='font-bold text-4xl'>My Listing</h2>
                 <Link to='/add-listing'>
-                    <Button>
+                    <Button className="bg-slate-700">
                         <MdOutlineNoteAdd /> Post a new Listing
                     </Button>
                 </Link>
@@ -54,9 +54,9 @@ function MyListing() {
                 {carList.map((item, index) => (
                     <div key={index}>
                         <CarItem car={item} />
-                        <div className='p-2 bg-gray-50 rounded-lg flex justify-between gap-3'>
+                        <div className='mt-2 p-2 bg-slate-800 rounded-lg flex justify-between gap-3'>
                             <Link to={'/add-listing?mode=edit&id=' + item.id} className='w-full'>
-                                <Button variant="outline" className='w-full'>Edit</Button>
+                                <Button variant="outline-none" className='w-full bg-slate-900'>Edit</Button>
                             </Link>
 
                             <AlertDialog>
@@ -65,10 +65,10 @@ function MyListing() {
                                         <Button variant="destructive"><FaRegTrashAlt /></Button>
                                     
                                 </AlertDialogTrigger>
-                                <AlertDialogContent>
+                                <AlertDialogContent className="bg-slate-900">
                                     <AlertDialogHeader>
-                                        <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                                        <AlertDialogDescription>
+                                        <AlertDialogTitle className="text-white">Are you absolutely sure?</AlertDialogTitle>
+                                        <AlertDialogDescription className="text-white">
                                             This action cannot be undone. This will permanently delete your listing
                                             and remove your car data from our servers.
                                         </AlertDialogDescription>
