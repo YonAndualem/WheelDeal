@@ -24,9 +24,9 @@ function CarItem({ car }) {
     return (
         <Link to={'/listing-details/' + car?.id} >
             <div className='rounded-xl bg-slate-900 border hover:shadow-md cursor-pointer'>
-                {new Date() - new Date(car?.timestamp) < 30 * 24 * 60 * 60 * 1000 && (
+                
                     <h2 className='absolute m-2 bg-green-600 px-2 rounded-full text-sm text-white'>NEW</h2>
-                )}
+                
                 <img
                     src={car?.images[currentImageIndex]?.imageUrl}
                     width={'100%'}
