@@ -89,7 +89,7 @@ function UploadImages({ triggerUploadImages, setLoader, carInfo, mode }) {
                     </div>
                 ))}
                 <label htmlFor="upload-images">
-                    <div className='border rounded-xl border-dotted border-primary bg-blue-100 p-10 cursor-pointer hover:shadow-md'>
+                    <div className='border rounded-xl border-dotted border-primary bg-slate-700 p-10 cursor-pointer hover:shadow-md'>
                         <h2 className='text-lg text-center text-primary'>+</h2>
                     </div>
                 </label>

@@ -9,7 +9,7 @@ function OwnersDetail({ carDetail }) {
             <h2 className='mt-2 font-bold text-xl'>{carDetail?.userName}</h2>
             <h2 className='mt-2 text-gray-500'>{carDetail?.createdBy}</h2>
             
-            <Button className='w-full mt-6'>Message Owner</Button>
+            <Button className='w-full mt-6 bg-slate-700'>Message Owner</Button>
         </div>
     )
 }

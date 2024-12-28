@@ -14,7 +14,7 @@ function DropDown({ item, handleInputChange, carInfo }) {
                 <SelectTrigger className="w-full">
                     <SelectValue placeholder={carInfo?.[item?.name] ? carInfo?.[item?.name] : item.label} />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-slate-800 text-white">
                     {item?.options?.map((options, index)=>(
                         <SelectItem value={options}>{options}</SelectItem>
                     ))}

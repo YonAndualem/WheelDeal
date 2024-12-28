@@ -5,7 +5,7 @@ import React from 'react'
 function Specification({carDetail}) {
     console.log(carDetail)
   return (
-    <div className='p-10 rounded-xl border shadow-md mt-7 pt-4'>
+    <div className='p-10 rounded-xl border shadow-md mt-7 pt-4 text-white'>
         <h2 className='font-medium text-2xl pb-3'>Specifications</h2>
         {CarSpecification.map((item, index)=>(
             <div key={index} className='mt-5 flex items-center justify-between'>

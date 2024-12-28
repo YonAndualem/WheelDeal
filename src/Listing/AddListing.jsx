@@ -20,6 +20,7 @@ import { useUser } from '@clerk/clerk-react'
 import moment from 'moment'
 import { eq } from 'drizzle-orm'
 import Service from '../components/Shared/Service'
+import Footer from '@/components/Footer'
 function AddListing() {
 
     const [formData, setFormData] = useState ([]);
@@ -122,7 +123,7 @@ function AddListing() {
     }
 
     return (
-        <div>
+        <div className='bg-slate-800 text-white'>
             <Header />
             <div className='px-10 md:px-20 my-10'>
                 <h2 className='font-bold text-4xl'>Add a New Listing</h2>
@@ -166,17 +167,20 @@ function AddListing() {
                     <UploadImages triggerUploadImages={triggerUploadImages} 
                     carInfo={carInfo}
                     mode={mode}
-                    setLoader={(v) => {setLoader(v);navigate('/profile')}} />
+                    setLoader={(v) => {setLoader(v);navigate('/profile')}} 
+                    />
 
                     {/* */}
 
                     <div className='mt-10 flex justify-end'>
-                        <Button type="button" disabled={loader} onClick={(e)=>onSubmit(e)} >
+                        <Button type="button" disabled={loader} onClick={(e)=>onSubmit(e)} className="bg-slate-700" >
                             {!loader ? 'Submit' : <TbLoader2 className='animate-spin text-lg' />}
                             </Button>
                     </div>
                 </form>
+                
             </div>
+            <Footer />
         </div>
     )
 }

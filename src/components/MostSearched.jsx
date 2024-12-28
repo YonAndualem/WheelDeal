@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import FakeData from './Shared/FakeData'
 import CarItem from './CarItem'
 import {
     Carousel,
@@ -32,14 +31,6 @@ function MostSearched() {
     }
     useEffect(() => {
         const interval = setInterval(() => {
-            document.querySelector('.carousel-next').click();
-        }, 3000); // Change slide every 3 seconds
-
-        return () => clearInterval(interval);
-    }, []);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
             const nextButton = document.querySelector('.carousel-next');
             const carouselItems = document.querySelectorAll('.carousel-item');
             const activeItem = document.querySelector('.carousel-item.active');
@@ -50,13 +41,14 @@ function MostSearched() {
             } else {
                 nextButton.click();
             }
-        }, 5000); // Change slide every 5 seconds
+        }, 10000); // Change slide every 10 seconds
+
 
         return () => clearInterval(interval);
     }, []);
 
     return (
-        <div className='mx-24 '>
+        <div className='mx-24 text-white bg-slate-800'>
             <h2 className='font-bold text-3xl text-center mt-10 mb-10'>Available Listings</h2>
 
             <Carousel className="mb-10">

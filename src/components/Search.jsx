@@ -18,7 +18,7 @@ function Search() {
     const [price, setPrice] = useState();
 
     return (
-        <div className='p-2 md:p-5 bg-slate-900 rounded-md md:rounded-full flex-col md:flex md:flex-row gap-10 px-5 items-center w-[60%]'>
+        <div className='p-2 md:p-5 bg-slate-900 rounded-md md:rounded-full flex-col md:flex md:flex-row gap-10 px-5 items-center w-[60%] text-white'>
             <Select onValueChange={(value) => setCars(value)}>
                 <SelectTrigger className="outline-none md:border-none w-full shadow-none text-lg">
                     <SelectValue placeholder="Condition" />

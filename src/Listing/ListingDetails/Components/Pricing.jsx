@@ -7,7 +7,7 @@ function Pricing({carDetail}) {
         <h2>Offer Price</h2>
         <h2 className='font-bold text-4xl'>${carDetail?.sellingPrice ?? 'N/A'}</h2>
 
-          <Button className='w-full mt-7' size="lg"><MdOutlineLocalOffer className='text-lg mr-2'/> Make an Offer!</Button>
+          <Button className='w-full mt-7 bg-slate-700' size="lg"><MdOutlineLocalOffer className='text-lg mr-2'/> Make an Offer!</Button>
     </div>
   )
 }

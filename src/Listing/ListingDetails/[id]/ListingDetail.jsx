@@ -33,9 +33,9 @@ function ListingDetail() {
         setCarDetail(resp[0])
     }
     return (
-        <div>
+        <div className='bg-slate-800'>
             <Header />
-            <div className='p-10 md:px-20'>
+            <div className='p-10 md:px-20 text-white bg-slate-800'>
                 <DetailHeader carDetail={carDetail} />
 
                 <div className='grid grid-cols-1 md:grid-cols-3 w-full mt-10 gap-5'>
