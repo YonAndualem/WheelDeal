@@ -1,54 +1,119 @@
 {
-    "features": [
-        {
-            "label": "Air Conditioner",
-            "name": "airConditioner",
-            "fieldType": "checkbox"
-        },
-        {
-            "label": "Digital Odometer",
-            "name": "digitalOdometer",
-            "fieldType": "checkbox"
-        },
-        {
-          "label": "Heater",
-          "name": "heater",
-          "fieldType": "checkbox"
-        },
-        {
-          "label": "Leather Seats",
-          "name": "leatherSeats",
-          "fieldType": "checkbox"
-        },
-        {
-          "label": "Panoramic Moonroof",
-          "name": "panoramicMoonroof",
-          "fieldType": "checkbox"
-        },
-        {
-          "label": "Tachometer",
-          "name": "tachometer",
-          "fieldType": "checkbox"
-        },
-        {
-          "label": "Touchscreen Display",
-          "name": "touchscreenDisplay",
-          "fieldType": "checkbox"
-        },
-        {
-          "label": "Anti-lock Breaking",
-          "name": "antilockBreaking",
-          "fieldType": "checkbox"
-        },
-        {
-          "label": "Air Conditioner",
-          "name": "airConditioner",
-          "fieldType": "checkbox"
-        },
-        {
-          "label": "Brake Assist",
-          "name": "brakeAssist",
-          "fieldType": "checkbox"
-        }
-    ]
+  "features": [
+    {
+      "label": "Air Conditioner",
+      "name": "airConditioner",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Digital Odometer",
+      "name": "digitalOdometer",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Heater",
+      "name": "heater",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Leather Seats",
+      "name": "leatherSeats",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Panoramic Moonroof",
+      "name": "panoramicMoonroof",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Tachometer",
+      "name": "tachometer",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Touchscreen Display",
+      "name": "touchscreenDisplay",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Anti-lock Breaking",
+      "name": "antilockBreaking",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Brake Assist",
+      "name": "brakeAssist",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Cruise Control",
+      "name": "cruiseControl",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Parking Sensors",
+      "name": "parkingSensors",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Rearview Camera",
+      "name": "rearviewCamera",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Bluetooth Connectivity",
+      "name": "bluetoothConnectivity",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Navigation System",
+      "name": "navigationSystem",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Keyless Entry",
+      "name": "keylessEntry",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Remote Start",
+      "name": "remoteStart",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Blind Spot Monitoring",
+      "name": "blindSpotMonitoring",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Lane Departure Warning",
+      "name": "laneDepartureWarning",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Adaptive Cruise Control",
+      "name": "adaptiveCruiseControl",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Automatic Emergency Braking",
+      "name": "automaticEmergencyBraking",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Heated Seats",
+      "name": "heatedSeats",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Ventilated Seats",
+      "name": "ventilatedSeats",
+      "fieldType": "checkbox"
+    },
+    {
+      "label": "Wireless Charging",
+      "name": "wirelessCharging",
+      "fieldType": "checkbox"
+    }
+  ]
 }
