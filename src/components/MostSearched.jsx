@@ -1,34 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import CarItem from './CarItem'
+import React, { useEffect, useState } from 'react';
+import CarItem from './CarItem';
 import {
     Carousel,
     CarouselContent,
     CarouselItem,
     CarouselNext,
     CarouselPrevious,
-} from "@/components/ui/carousel"
-import { CarImages, carListing } from '../../Configs/schema';
-import { eq, desc } from 'drizzle-orm';
-import { db } from '../../Configs/neon';
-import Service from '../components/Shared/Service';
+} from "@/components/ui/carousel";
 
+// 🔹 Load API URL from .env.local file instead of hardcoding it
+const API_URL = import.meta.env.VITE_API_URL;
 
 function MostSearched() {
     const [carList, setCarList] = useState([]);
+
     useEffect(() => {
-        getPopularCarList()
-    }, [])
+        getPopularCarList();
+    }, []);
 
     const getPopularCarList = async () => {
-        const result = await db.select().from(carListing)
-            .leftJoin(CarImages, eq(carListing.id, CarImages.carListingId))
-            .orderBy(desc(carListing.id))
-            .limit(10)
+        try {
+            // 🔹 Changed from Drizzle ORM to Fetch API to get data from Spring Boot
+            const response = await fetch(`${API_URL}/cars`);
+            if (!response.ok) {
+                throw new Error("Failed to fetch data");
+            }
+            const data = await response.json();
+            setCarList(data); // 🔹 Update state with API response
+            console.log("Car listings fetched successfully:", data);
+        } catch (error) {
+            console.error("Error fetching car listings:", error);
+        }
+    };
 
-        const resp = Service.FormatResult(result);
-        console.log(resp);
-        setCarList(resp);
-    }
     useEffect(() => {
         const interval = setInterval(() => {
             const nextButton = document.querySelector('.carousel-next');
@@ -42,7 +46,6 @@ function MostSearched() {
                 nextButton.click();
             }
         }, 10000); // Change slide every 10 seconds
-
 
         return () => clearInterval(interval);
     }, []);
@@ -59,11 +62,11 @@ function MostSearched() {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious className="carousel-previous text-white bg-slate-900"/>
-                <CarouselNext className="carousel-next text-white bg-slate-900"/>
+                <CarouselPrevious className="carousel-previous text-white bg-slate-900" />
+                <CarouselNext className="carousel-next text-white bg-slate-900" />
             </Carousel>
         </div>
-    )
+    );
 }
 
-export default MostSearched
+export default MostSearched;

@@ -1,52 +1,66 @@
-import Header from '@/components/Header'
-import Search from '@/components/Search'
-import { CarImages, carListing } from '../../../Configs/schema';
-import { eq } from 'drizzle-orm';
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { db } from '../../../Configs/neon';
-import Service from '@/components/Shared/Service';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import Header from '@/components/Header';
+import Search from '@/components/Search';
 import CarItem from '@/components/CarItem';
 import Footer from '@/components/Footer';
 
-function CategoryFilter() {
+// 🔹 Load API URL from .env.local file
+const API_URL = import.meta.env.VITE_API_URL;
 
+function CategoryFilter() {
     const { category } = useParams();
     const [carList, setCarList] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
     useEffect(() => {
         getCarList();
-    }, [])
-    const getCarList = async () => {
-        const result = await db.select().from(carListing)
-            .innerJoin(CarImages, eq(carListing.id, CarImages.carListingId))
-            .where(eq(carListing.category, category))
+    }, [category]); // ✅ Re-fetch when category changes
 
-        const resp = Service.FormatResult(result);
-        setCarList(resp);
-    }
+    // ✅ Fetch cars by category from Spring Boot API
+    const getCarList = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const response = await fetch(`${API_URL}/cars/category/${category}`);
+            if (!response.ok) {
+                throw new Error("Failed to fetch cars");
+            }
+            const data = await response.json();
+            setCarList(data);
+        } catch (error) {
+            console.error("Error fetching category cars:", error);
+            setError("Something went wrong. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <div>
             <Header />
-            <div className='p-16 bg-slate-800 flex justify-center'>
-                <Search />
-            </div>
-            <div className='p-10 md:px-20 bg-slate-800 text-white'>
+            <div className='p-10 md:px-20 bg-slate-800 text-white' style={{ minHeight: 'calc(100vh - 150px)' }}>
                 <h2 className='font-bold text-4xl'>{category}</h2>
-                <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-7'>
-                    {carList?.length>0? carList.map((item, index) => (
-                        <div key={index} >
-                            <CarItem car={item} />
-                        </div>
-                    )) : [1, 2, 3, 4, 5, 6].map((item, index) => (
-                        <div className='animate-pulse h-[250px] rounded-xl bg-slate-700'>
-                        </div>
-                    ))}
-                </div>
-
+                {loading ? (
+                    <div className='text-center text-gray-400 mt-5'>Loading cars...</div>
+                ) : error ? (
+                    <div className='text-center text-red-500 mt-5'>{error}</div>
+                ) : carList.length > 0 ? (
+                    <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-7'>
+                        {carList.map((item, index) => (
+                            <div key={index}>
+                                <CarItem car={item} />
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className='text-center text-gray-400 mt-5' tyle={{ minHeight: 'calc(100vh - 150px)' }}>No cars found for this category.</div>
+                )}
             </div>
-            <Footer/>
+            <Footer />
         </div>
-    )
+    );
 }
 
-export default CategoryFilter
+export default CategoryFilter;

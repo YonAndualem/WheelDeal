@@ -2,9 +2,6 @@ import Header from '@/components/Header'
 import React, { useEffect, useState } from 'react'
 import DetailHeader from '../Components/DetailHeader'
 import { useParams } from 'react-router-dom'
-import { db } from '../../../../Configs/neon';
-import { CarImages, carListing } from '../../../../Configs/schema';
-import { eq } from 'drizzle-orm';
 import Service from '@/components/Shared/Service';
 import ImageGallery from '../Components/ImageGallery';
 import Description from '../Components/Description';
@@ -15,23 +12,31 @@ import OwnersDetail from '../Components/OwnersDetail';
 import MostSearched from '@/components/MostSearched';
 import Footer from '@/components/Footer';
 
-function ListingDetail() {
+// 🔹 Load API URL from .env.local file
+const API_URL = import.meta.env.VITE_API_URL;
 
+function ListingDetail() {
     const { id } = useParams();
-    const [carDetail, setCarDetail] = useState();
+    const [carDetail, setCarDetail] = useState(null);
 
     useEffect(() => {
-        getCarDetail()
-    }, [])
+        getCarDetail();
+    }, []);
 
+    // ✅ Fetch car details from Spring Boot API
     const getCarDetail = async () => {
-        const result = await db.select().from(carListing)
-            .innerJoin(CarImages, eq(carListing.id, CarImages.carListingId))
-            .where(eq(carListing.id, id))
+        try {
+            const response = await fetch(`${API_URL}/cars/${id}`);
+            if (!response.ok) {
+                throw new Error("Failed to fetch car details");
+            }
+            const data = await response.json();
+            setCarDetail(data);
+        } catch (error) {
+            console.error("Error fetching car details:", error);
+        }
+    };
 
-        const resp = Service.FormatResult(result);
-        setCarDetail(resp[0])
-    }
     return (
         <div className='bg-slate-800'>
             <Header />
@@ -39,23 +44,23 @@ function ListingDetail() {
                 <DetailHeader carDetail={carDetail} />
 
                 <div className='grid grid-cols-1 md:grid-cols-3 w-full mt-10 gap-5'>
-                    {/*Left */}
+                    {/* Left Section */}
                     <div className='md:col-span-2'>
-                        {/*Image */}
+                        {/* Image Gallery */}
                         <ImageGallery carDetail={carDetail} />
-                        {/*Description */}
+                        {/* Description */}
                         <Description carDetail={carDetail} />
-                        {/*Features */}
+                        {/* Features */}
                         <Features features={carDetail?.features} />
-
                     </div>
-                    {/*Right */}
+
+                    {/* Right Section */}
                     <div>
-                        {/*Price */}
+                        {/* Pricing */}
                         <Pricing carDetail={carDetail} />
-                        {/*Car Details */}
+                        {/* Car Specifications */}
                         <Specification carDetail={carDetail} />
-                        {/*owner Details */}
+                        {/* Owner Details */}
                         <OwnersDetail carDetail={carDetail} />
                     </div>
                 </div>
@@ -63,7 +68,7 @@ function ListingDetail() {
             <MostSearched />
             <Footer />
         </div>
-    )
+    );
 }
 
-export default ListingDetail
+export default ListingDetail;

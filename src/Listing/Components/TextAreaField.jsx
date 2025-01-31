@@ -7,7 +7,7 @@ function TextAreaField({ item, handleInputChange, carInfo }) {
             <Textarea
                 onChange={(e) => handleInputChange(item.name, e.target.value)}
                 required={item.required} type={item?.fieldType}
-                placeholder={item.placeholder || "Enter a description"}
+                placeholder={item.placeholder || "Enter a description..."}
                 defaultValue={carInfo ? carInfo[item.name] : ""}
             />
         </div>
