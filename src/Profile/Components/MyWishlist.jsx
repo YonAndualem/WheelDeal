@@ -45,9 +45,11 @@ function MyWishlist() {
     // ✅ Remove from Wishlist
     const removeFromWishlist = async (carId) => {
         try {
-            const response = await fetch(`${API_URL}/wishlist/${carId}?userEmail=${encodeURIComponent(user?.primaryEmailAddress?.emailAddress)}`, {
+            let userEmail = encodeURIComponent(user?.primaryEmailAddress?.emailAddress).replace(/%40/g, "@");
+            const response = await fetch(`${API_URL}/wishlist/${carId}?userEmail=${userEmail}`, {
                 method: 'DELETE',
             });
+
 
             if (response.ok) {
                 toast.success('Removed from wishlist');
