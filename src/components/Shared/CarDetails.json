@@ -54,7 +54,7 @@
             "name": "type",
             "fieldType": "dropdown",
             "required": true,
-            "options": ["Electric", "Hybrid", "Petrol", "Diesel"],
+            "options": ["Luxury", "Compact", "Sport", "Crossover", "Off-Road", "Performance"],
             "column": 1,
             "icon": "FaChargingStation"
         },
@@ -105,7 +105,7 @@
             "label": "Fuel Type",
             "name": "fuelType",
             "fieldType": "dropdown",
-            "options":["Petrol", "Diesel","Electric","Hybrid"],
+            "options":["Gasoline", "Diesel","Electric","Hybrid"],
             "required":true,
             "column":1,
             "icon":"FaGasPump"
@@ -113,7 +113,7 @@
         {
             "label": "Mileage",
             "name": "mileage",
-            "fieldType":"number",
+            "fieldType":"text",
             "required":true,
             "column":1,
             "icon":"FaTachometerAlt"
@@ -160,7 +160,7 @@
             "label":"Offer Type",
             "name":"offerType",
             "fieldType":"dropdown",
-            "options":["Buy", "Hot Offer", "Sell", "Urgent"],
+            "options":["Negotiable", "Fixed", "Bank Lease" ],
             "column":2,
             "icon":"FaTags"
         },

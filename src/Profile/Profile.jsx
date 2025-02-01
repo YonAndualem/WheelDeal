@@ -3,6 +3,7 @@ import React from 'react'
 import MyListing from './Components/MyListing';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Footer from '@/components/Footer';
+import MyWishlist from './Components/MyWishlist';
 
 function Profile() {
     return (
@@ -13,7 +14,7 @@ function Profile() {
                     <TabsList className="flex justify-start w-full gap-12 bg-slate-900 text-white">
                         <TabsTrigger value="my-listing">My Listing</TabsTrigger>
                         <TabsTrigger value="inbox">Inbox</TabsTrigger>
-                        <TabsTrigger value="profile">Profile</TabsTrigger>
+                        <TabsTrigger value="my-wishlist">My WishList</TabsTrigger>
                     </TabsList>
                     <TabsContent value="my-listing">
                         <MyListing />
@@ -21,8 +22,8 @@ function Profile() {
                     <TabsContent value="inbox">
                         Inbox
                     </TabsContent>
-                    <TabsContent value="profile">
-                        Profile
+                    <TabsContent value="my-wishlist">
+                        <MyWishlist />
                     </TabsContent>
                 </Tabs>
             </div>
