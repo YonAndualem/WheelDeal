@@ -19,12 +19,12 @@ public class CarImageService {
     @Autowired
     private CarListingRepository carListingRepository;
 
-    // ✅ Fetch all images for a specific car listing
+    //  Fetch all images for a specific car listing
     public List<CarImages> getImagesByCarListingId(Long carListingId) {
         return carImagesRepository.findByCarListingId(carListingId);
     }
 
-    // ✅ Upload multiple images for a specific car listing
+    //  Upload multiple images for a specific car listing
     public List<CarImages> addImagesToCarListing(Long carListingId, List<String> imageUrls) {
         CarListing carListing = carListingRepository.findById(carListingId)
                 .orElseThrow(() -> new RuntimeException("Car listing not found"));
@@ -39,7 +39,7 @@ public class CarImageService {
         return carImagesRepository.saveAll(images);
     }
 
-    // ✅ Delete an image by ID
+    //  Delete an image by ID
     public void deleteImage(Long imageId) {
         carImagesRepository.deleteById(imageId);
     }

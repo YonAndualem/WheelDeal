@@ -16,7 +16,7 @@ public class WishlistController {
     @Autowired
     private WishlistService wishlistService;
 
-    // ✅ Add a car listing to the wishlist
+    //  Add a car listing to the wishlist
     @PostMapping("/{carListingId}")
     public Wishlist addToWishlist(
             @RequestParam(name = "userEmail", required = false) String userEmail,
@@ -29,13 +29,13 @@ public class WishlistController {
 
 
 
-    // ✅ Get all wishlist items for a user
+    //  Get all wishlist items for a user
     @GetMapping
     public List<Wishlist> getUserWishlist(@RequestParam String userEmail) {
         return wishlistService.getUserWishlist(userEmail);
     }
 
-    // ✅ Remove a car listing from the wishlist
+    // Remove a car listing from the wishlist
     @DeleteMapping("/{carListingId}")
     public ResponseEntity<?> deleteFromWishlist(
             @RequestParam(name = "userEmail") String userEmail,

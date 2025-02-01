@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CarImagesRepository extends JpaRepository<CarImages, Long> {
-    List<CarImages> findByCarListingId(Long carListingId);
+    List<CarImages> findByCarListingId(Long carListingId); // Fetch all images for a car listing
 }

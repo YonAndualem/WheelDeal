@@ -9,7 +9,7 @@ import org.hibernate.type.SqlTypes;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
-
+// CarListing entity
 @Data
 @Entity
 public class CarListing {

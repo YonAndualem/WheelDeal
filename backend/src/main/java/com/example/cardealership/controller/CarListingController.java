@@ -14,29 +14,29 @@ public class CarListingController {
     @Autowired
     private CarListingService carListingService;
     //GET request
-    // ✅ Fetch all car listings
+    //  Fetch all car listings
     @GetMapping
     public List<CarListing> getAllCars() {
         return carListingService.getAllCars();
     }
-    // ✅ Fetch a specific car listing by ID
+    //  Fetch a specific car listing by ID
     @GetMapping("/{id}")
     public CarListing getCarById(@PathVariable Long id) {
         return carListingService.getCarById(id);
     }
-    // ✅ Fetch all car listings by a specific user
+    //  Fetch all car listings by a specific user
     @GetMapping("/user/{createdBy}")
     public List<CarListing> getCarsByUserEmail(@PathVariable("createdBy") String createdBy) {
         return carListingService.getCarsByUserEmail(createdBy);
     }
 
-    // ✅ Fetch all car listings by a specific make
+    //  Fetch all car listings by a specific make
     @GetMapping("/make/{make}")
     public List<CarListing> getCarsByMake(@PathVariable String make) {
         return carListingService.getCarsByMake(make);
     }
 
-    // ✅ Fetch all car listings by condition
+    //  Fetch all car listings by condition
     @GetMapping("/condition/{condition}")
     public List<CarListing> getCarsByCondition(@PathVariable String condition) {
         return carListingService.getCarsByCondition(condition);
@@ -47,7 +47,7 @@ public class CarListingController {
         return carListingService.getCarsByCategory(category);
     }
 
-    // ✅ Search cars by condition, make, and price (<=)
+    //  Search cars by condition, make, and price (<=)
     @GetMapping("/search")
     public List<CarListing> searchCars(
             @RequestParam(required = false) String condition,
@@ -56,16 +56,19 @@ public class CarListingController {
         return carListingService.searchCars(condition, make, price);
     }
 
+    //POST request
     @PostMapping
     public CarListing createCarListing(@RequestBody CarListing carListing) {
         return carListingService.createCarListing(carListing);
     }
 
+    //PUT request
     @PutMapping("/{id}")
     public CarListing updateCarListing(@PathVariable Long id, @RequestBody CarListing carListing) {
         return carListingService.updateCarListing(id, carListing);
     }
 
+    //DELETE request
     @DeleteMapping("/{id}")
     public void deleteCarListing(@PathVariable Long id) {
         carListingService.deleteCarListing(id);

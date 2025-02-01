@@ -26,13 +26,13 @@ public class ChatService {
         chatMessageRepository.deleteById(messageId);
     }
 
-    // ✅ Edit an existing message
+    //  Edit an existing message
     public ChatMessage updateMessage(Long messageId, String newMessageText, String newImageUrl) {
         Optional<ChatMessage> existingMessage = chatMessageRepository.findById(messageId);
         if (existingMessage.isPresent()) {
             ChatMessage message = existingMessage.get();
 
-            // ✅ Allow updating text OR image (or both)
+            //  Allow updating text OR image (or both)
             boolean isUpdated = false;
             if (newMessageText != null && !newMessageText.isEmpty()) {
                 message.setMessageText(newMessageText);
@@ -44,7 +44,7 @@ public class ChatService {
             }
 
             if (isUpdated) {
-                message.setEdited(true); // ✅ Mark message as edited
+                message.setEdited(true); //  Mark message as edited
                 return chatMessageRepository.save(message);
             } else {
                 throw new RuntimeException("No valid data to update.");

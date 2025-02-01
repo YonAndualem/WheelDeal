@@ -35,5 +35,5 @@ public class ChatMessage {
     private LocalDateTime timestamp = LocalDateTime.now(); // When the message was sent
 
     @Column(nullable = false)
-    private boolean edited = false; // ✅ New field: Track if message was edited
+    private boolean edited = false; // New field: Track if message was edited
 }

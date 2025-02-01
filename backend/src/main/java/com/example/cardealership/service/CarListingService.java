@@ -18,31 +18,31 @@ public class CarListingService {
     private CarListingRepository carListingRepository;
 
     //GET requests
-    // ✅ Fetch all car listings
+    //  Fetch all car listings
     public List<CarListing> getAllCars() {
         return carListingRepository.findAll();
     }
-    // ✅ Fetch a specific car listing by ID
+    //  Fetch a specific car listing by ID
     public CarListing getCarById(Long id) {
         return carListingRepository.findById(id).orElseThrow(() -> new RuntimeException("Car listing not found"));
     }
-    // ✅ Fetch all car listings by a specific user
+    //  Fetch all car listings by a specific user
     public List<CarListing> getCarsByUserEmail(String email) {
         return carListingRepository.findByCreatedBy(email);
     }
 
-    // ✅ Fetch all car listings by a specific make
+    //  Fetch all car listings by a specific make
     public List<CarListing> getCarsByMake(String make) {
         return carListingRepository.findByMake(make);
     }
 
 
-    // ✅ Fetch all car listings by condition
+    //  Fetch all car listings by condition
     public List<CarListing> getCarsByCondition(String condition) {
         return carListingRepository.findByCondition(condition);
     }
 
-    // ✅ Search for cars based on `condition`, `make`, and `price`
+    //  Search for cars based on `condition`, `make`, and `price`
     public List<CarListing> searchCars(String condition, String make, String price) {
         Double parsedPrice = null;
         if (price != null) {
@@ -68,19 +68,19 @@ public class CarListingService {
         }
     }
 
-    // ✅ Fetch cars by category
+    //  Fetch cars by category
     public List<CarListing> getCarsByCategory(String category) {
         return carListingRepository.findByCategory(category);
     }
 
     //POST requests
-    // ✅ Create a new car listing
+    //  Create a new car listing
     public CarListing createCarListing(CarListing carListing) {
-        // ✅ Format date as "dd/MM/yyyy" and store it as a String
+        //  Format date as "dd/MM/yyyy" and store it as a String
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         carListing.setPostedOn(LocalDate.now().format(formatter));
 
-        // ✅ Link each image to the car listing before saving
+        //  Link each image to the car listing before saving
         if (carListing.getImages() != null) {
             for (CarImages image : carListing.getImages()) {
                 image.setCarListing(carListing);
@@ -91,7 +91,7 @@ public class CarListingService {
     }
 
     //PUT requests
-    // ✅ Update a specific car listing
+    //  Update a specific car listing
     public CarListing updateCarListing(Long id, CarListing carListing) {
         CarListing existingCarListing = getCarById(id);
         carListing.setId(id);
@@ -99,7 +99,7 @@ public class CarListingService {
         return carListingRepository.save(carListing);
     }
 
-    //DELETE requests
+    // DELETE requests
     public void deleteCarListing(Long id) {
         CarListing carListing = getCarById(id);
         carListingRepository.delete(carListing);

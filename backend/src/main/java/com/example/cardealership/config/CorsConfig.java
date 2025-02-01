@@ -11,7 +11,7 @@ import java.util.List;
 
 @Configuration
 public class CorsConfig {
-
+    // Allow frontend to access backend
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
