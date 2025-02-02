@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import MyWishlist from './Components/MyWishlist';
 import Chat from './Components/Chat/Chat';
 import { useSearchParams } from "react-router-dom";
+import UserProfile from './Components/UserProfile';
 
 function Profile() {
     const [searchParams] = useSearchParams();
@@ -20,6 +21,7 @@ function Profile() {
                         <TabsTrigger value="my-listing">My Listing</TabsTrigger>
                         <TabsTrigger value="chat">Chat</TabsTrigger>
                         <TabsTrigger value="my-wishlist">My WishList</TabsTrigger>
+                        <TabsTrigger value="profile">Profile</TabsTrigger>
                     </TabsList>
                     <TabsContent value="my-listing">
                         <MyListing />
@@ -29,6 +31,9 @@ function Profile() {
                     </TabsContent>
                     <TabsContent value="my-wishlist">
                         <MyWishlist />
+                    </TabsContent>
+                    <TabsContent value="profile">
+                        <UserProfile />
                     </TabsContent>
                 </Tabs>
             </div>
