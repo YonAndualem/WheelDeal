@@ -51,7 +51,7 @@ function Pricing({ carDetail }) {
       }
     } catch (error) {
       console.error('Error toggling wishlist:', error);
-      toast.error('Something went wrong');
+      toast.error('Please LogIn first');
     }
   };
 
