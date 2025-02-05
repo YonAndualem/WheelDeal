@@ -5,7 +5,7 @@ import Search from '@/components/Search';
 import CarItem from '@/components/CarItem';
 import Footer from '@/components/Footer';
 
-// 🔹 Load API URL from .env.local file
+//  Load API URL from .env.local file
 const API_URL = import.meta.env.VITE_API_URL;
 
 function CategoryFilter() {
@@ -16,9 +16,9 @@ function CategoryFilter() {
 
     useEffect(() => {
         getCarList();
-    }, [category]); // ✅ Re-fetch when category changes
+    }, [category]); //  Re-fetch when category changes
 
-    // ✅ Fetch cars by category from Spring Boot API
+    //  Fetch cars by category from Spring Boot API
     const getCarList = async () => {
         setLoading(true);
         setError(null);

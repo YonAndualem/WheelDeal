@@ -12,7 +12,7 @@ import OwnersDetail from '../Components/OwnersDetail';
 import MostSearched from '@/components/MostSearched';
 import Footer from '@/components/Footer';
 
-// 🔹 Load API URL from .env.local file
+//  Load API URL from .env.local file
 const API_URL = import.meta.env.VITE_API_URL;
 
 function ListingDetail() {
@@ -23,7 +23,7 @@ function ListingDetail() {
         getCarDetail();
     }, []);
 
-    // ✅ Fetch car details from Spring Boot API
+    //  Fetch car details from Spring Boot API
     const getCarDetail = async () => {
         try {
             const response = await fetch(`${API_URL}/cars/${id}`);

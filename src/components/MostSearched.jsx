@@ -8,7 +8,7 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel";
 
-// 🔹 Load API URL from .env.local file instead of hardcoding it
+//  Load API URL from .env.local file instead of hardcoding it
 const API_URL = import.meta.env.VITE_API_URL;
 
 function MostSearched() {
@@ -20,13 +20,13 @@ function MostSearched() {
 
     const getPopularCarList = async () => {
         try {
-            // 🔹 Changed from Drizzle ORM to Fetch API to get data from Spring Boot
+            
             const response = await fetch(`${API_URL}/cars`);
             if (!response.ok) {
                 throw new Error("Failed to fetch data");
             }
             const data = await response.json();
-            setCarList(data); // 🔹 Update state with API response
+            setCarList(data); //  Update state with API response
             console.log("Car listings fetched successfully:", data);
         } catch (error) {
             console.error("Error fetching car listings:", error);

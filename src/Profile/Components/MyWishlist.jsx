@@ -18,10 +18,10 @@ import {
 const API_URL = import.meta.env.VITE_API_URL;
 
 function MyWishlist() {
-    const { user } = useUser(); // ✅ Get logged-in user
+    const { user } = useUser(); //  Get logged-in user
     const [wishlist, setWishlist] = useState([]);
 
-    // ✅ Fetch Wishlist Items on Load
+    //  Fetch Wishlist Items on Load
     useEffect(() => {
         if (user) {
             fetchWishlist();
@@ -42,7 +42,7 @@ function MyWishlist() {
         }
     };
 
-    // ✅ Remove from Wishlist
+    //  Remove from Wishlist
     const removeFromWishlist = async (carId) => {
         try {
             let userEmail = encodeURIComponent(user?.primaryEmailAddress?.emailAddress).replace(/%40/g, "@");

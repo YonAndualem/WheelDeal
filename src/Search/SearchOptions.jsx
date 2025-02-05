@@ -5,23 +5,23 @@ import Search from '@/components/Search';
 import CarItem from '@/components/CarItem';
 import Footer from '@/components/Footer';
 
-// 🔹 Load API URL from .env.local file
+//  Load API URL from .env.local file
 const API_URL = import.meta.env.VITE_API_URL;
 
 function SearchOptions() {
     const [searchParam] = useSearchParams();
     const condition = searchParam.get('cars');
     const make = searchParam.get('make');
-    const price = searchParam.get('price'); // ✅ Fetch price from search params
+    const price = searchParam.get('price'); //  Fetch price from search params
     const [carList, setCarList] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         getSearchResults();
-    }, [condition, make, price]); // ✅ Re-run effect when search params change
+    }, [condition, make, price]); //  Re-run effect when search params change
 
-    // ✅ Fetch search results from Spring Boot API
+    //  Fetch search results from Spring Boot API
     const getSearchResults = async () => {
         setLoading(true);
         setError(null);
@@ -30,7 +30,7 @@ function SearchOptions() {
             const params = new URLSearchParams();
             if (condition) params.append("condition", condition);
             if (make) params.append("make", make);
-            if (price) params.append("price", price.replace(/\$/g, '').replace(/,/g, '')); // ✅ Ensure proper price format
+            if (price) params.append("price", price.replace(/\$/g, '').replace(/,/g, '')); //  Ensure proper price format
 
             const response = await fetch(`${API_URL}/cars/search?${params.toString()}`);
             if (!response.ok) {

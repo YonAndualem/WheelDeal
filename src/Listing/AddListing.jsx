@@ -17,7 +17,7 @@ import { useUser } from '@clerk/clerk-react'
 import moment from 'moment'
 import Footer from '@/components/Footer'
 
-// 🔹 Load API URL from .env.local file
+//  Load API URL from .env.local file
 const API_URL = import.meta.env.VITE_API_URL;
 
 function AddListing() {
@@ -39,7 +39,7 @@ function AddListing() {
         }
     }, []);
 
-    // ✅ Fetch car listing details from Spring Boot API
+    // Fetch car listing details from Spring Boot API
     const getListingDetails = async () => {
         try {
             const response = await fetch(`${API_URL}/cars/${recordId}`);
@@ -55,7 +55,7 @@ function AddListing() {
         }
     };
 
-    // ✅ Handle input changes
+    // Handle input changes
     const handleInputChange = (name, value) => {
         setFormData((prevData) => ({
             ...prevData,
@@ -64,7 +64,7 @@ function AddListing() {
         console.log(formData);
     };
 
-    // ✅ Handle features changes
+    // Handle features changes
     const handleFeaturesChange = (name, value) => {
         setFeaturesData((prevData) => ({
             ...prevData,
@@ -73,7 +73,7 @@ function AddListing() {
         console.log(featuresData);
     };
 
-    // ✅ Handle form submission
+    // Handle form submission
     const onSubmit = async (e) => {
         e.preventDefault();
         setLoader(true);
@@ -92,14 +92,14 @@ function AddListing() {
         try {
             let response;
             if (mode === 'edit') {
-                // ✅ Update existing listing
+                //  Update existing listing
                 response = await fetch(`${API_URL}/cars/${recordId}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(listingData)
                 });
             } else {
-                // ✅ Create new listing
+                //  Create new listing
                 response = await fetch(`${API_URL}/cars`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
@@ -112,7 +112,7 @@ function AddListing() {
             }
 
             const result = await response.json();
-            setTriggerUploadImages(result.id); // ✅ Trigger image upload
+            setTriggerUploadImages(result.id); //  Trigger image upload
             toast(mode === 'edit' ? 'Listing updated successfully' : 'Listing added successfully');
             navigate('/profile');
         } catch (error) {
