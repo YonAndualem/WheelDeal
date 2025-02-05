@@ -2,7 +2,6 @@ import Header from '@/components/Header'
 import React, { useEffect, useState } from 'react'
 import DetailHeader from '../Components/DetailHeader'
 import { useParams } from 'react-router-dom'
-import Service from '@/components/Shared/Service';
 import ImageGallery from '../Components/ImageGallery';
 import Description from '../Components/Description';
 import Features from '../Components/Features';
