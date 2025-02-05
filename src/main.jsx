@@ -13,6 +13,7 @@ import ListingDetail from './Listing/ListingDetails/[id]/ListingDetail'
 import AboutUs from './Pages/AboutUs'
 import ContactUs from './Pages/ContactUs'
 import { dark } from '@clerk/themes'
+import MakeOffer from './Pages/MakeOffer'
 
 //React routing for page pathes by assigning their routes and which elements it should render
 const router = createBrowserRouter([
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
   {
     path: '/contact',
     element: <ContactUs/>
+  },
+  {
+    path: '/makeoffer',
+    element: <MakeOffer/>
   }
 
 ])

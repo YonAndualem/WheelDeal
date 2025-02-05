@@ -4,6 +4,7 @@ import { MdOutlineLocalOffer } from 'react-icons/md';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { toast } from 'sonner';
 import { useUser } from '@clerk/clerk-react'; //  Import Clerk to get logged-in user
+import { Link } from 'react-router-dom';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -62,9 +63,11 @@ function Pricing({ carDetail }) {
 
       {/*  Button Layout - Full Width if Owner, Side by Side Otherwise */}
       <div className={`flex ${isOwner ? 'justify-center' : 'justify-between'} gap-4 mt-7`}>
+        <Link to="/makeoffer" className={`w-${isOwner ? 'full' : '1/2'}`}>
         <Button className={`w-${isOwner ? 'full' : '1/2'} bg-slate-700 flex items-center justify-center`} size="lg">
           <MdOutlineLocalOffer className="text-lg mr-2" /> Make an Offer!
         </Button>
+        </Link>
 
         {/*  Show Wishlist Button only if the user is NOT the owner */}
         {!isOwner && (
