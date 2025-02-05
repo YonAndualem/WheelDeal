@@ -1,65 +1,92 @@
 # WheelDeal
 
-<img src="./public/logo.png" alt="WheelDeal Logo" width="50"/>
+## 🚗 About WheelDeal
 
-Welcome to the WheelDeal project! This repository contains the source code and documentation for the WheelDeal application.
-Welcome to the WheelDeal project! This repository contains the source code and documentation for the WheelDeal application.
+WheelDeal is a software application designed to facilitate vehicle deals by connecting buyers and sellers in an efficient and user-friendly manner. The platform simplifies the process of listing, searching, and negotiating vehicle prices, making car trading seamless.
 
-## Table of Contents
-- [Introduction](#introduction)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
+## ✨ Features
 
-## Introduction
-WheelDeal is a platform designed to facilitate the buying and selling of vehicles. It provides users with a seamless experience to list, search, and manage vehicle listings.
+- 🏷 Vehicle Listings: Users can list their vehicles with detailed descriptions and images.
+- 🔍 Search & Filter: Buyers can easily find vehicles using advanced filtering options.
+- 💬 Messaging System: In-app messaging to negotiate and finalize deals.
+- 📌 Favorites & Saved Listings: Users can save cars for later review.
+- 🔄 Real-time Updates: Instant notifications for new listings and messages.
 
-## Features
-- User authentication and authorization
-- Vehicle listing management
-- Advanced search and filtering options
+## 🛠 Technologies Used
 
-## Installation
-To get started with WheelDeal, follow these steps:
+- Frontend: [React]
+- Backend: [Springboot]
+- Database: [Postgers]
+- Authentication: [Clerk]
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/WheelDeal.git
-    ```
-2. Navigate to the project directory:
-    ```bash
-    cd WheelDeal
-    ```
-3. Install the dependencies:
-    ```bash
-    npm install
-    ```
-4. Add Environment Variables
-    - You can request this by contacting us
+## 🚀 Installation Guide
 
-## Usage
-To run the application locally, use the following command:
-```bash
-npm run dev
-```
-Open your browser and navigate to `http://localhost:5173` to access the application.
+1. Clone the Repository:
+   
+   git clone https://github.com/YonAndualem/WheelDeal.git
+   cd WheelDeal
+   
+2. Install Dependencies:
+      npm install  # For Node.js projects
+   
+3. Run the Application:
+      npm run dev  # For frontend apps
+4. Access the App: Open http://localhost:5173/ in your browser (or the appropriate port).
 
-## Contributing
-We welcome contributions from the community. To contribute, please follow these steps:
+### Backend Installation:
+
+1. Navigate to the Backend Directory:
+   
+   ```bash
+   cd backend
+   ```
+
+2. Install Dependencies:
+   
+   ```bash
+   ./mvnw install  # For Maven projects
+   ```
+
+3. Run the Backend Server:
+   
+   ```bash
+   ./mvnw spring-boot:run
+   ```
+
+4. Ensure the Backend is Running: Open http://localhost:8080/ in your browser (or the appropriate port).
+
+## 📖 Usage
+
+1. Sign Up/Login to access features.
+2. List a Vehicle with details and images.
+3. Search & Filter vehicles based on criteria.
+4. Contact Sellers and negotiate deals.
+5. Finalize Transactions securely.
+
+## 📚 API Documentation
+
+To access the API documentation, follow these steps:
+
+1. Ensure the backend server is running.
+2. Open your browser and navigate to [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) (or the appropriate port).
+
+This will open the Swagger UI where you can explore and test the API endpoints.
+
+## 🔥 Contributing
+
+Contributions are welcome! If you'd like to contribute:
 
 1. Fork the repository.
-2. Create a new branch:
-    ```bash
-    git checkout -b feature-branch
-    ```
-3. Make your changes and commit them:
-    ```bash
-    git commit -m "Description of your changes"
-    ```
-4. Push to the branch:
-    ```bash
-    git push origin feature-branch
-    ```
-5. Create a pull request.
+2. Create a new branch (feature-branch).
+3. Commit your changes.
+4. Push and open a Pull Request.
 
+
+
+## 📞 Contact
+
+For any issues or suggestions, please open an issue on GitHub or contact the project owner.
+
+---
+
+Enjoy using WheelDeal! 🚘💨
